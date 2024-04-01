@@ -7,7 +7,8 @@ import (
 
 func handler(w http.ResponseWriter, r *http.Request) {
 	if r.URL.Path == "/hello" {
-		fmt.Fprintf(w, "hello gopher")
+		w.Header().Set("Content-Type", "text/plain")
+		fmt.Fprintf(w, "hello earthlings")
 		return
 	}
 	fmt.Fprintf(w, "404 Not Found")
