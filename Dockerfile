@@ -3,8 +3,8 @@ FROM golang:1.22-alpine AS builder
 WORKDIR /app
 
 COPY . .
-RUN go mod download
-RUN go build -o app
+
+RUN CGO_ENABLED=0 go build -ldflags="-w -s" -o app
 
 FROM alpine:latest
 
